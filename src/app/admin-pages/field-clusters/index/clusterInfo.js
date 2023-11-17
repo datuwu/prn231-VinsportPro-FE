@@ -37,10 +37,10 @@ export const clusterColumns = [
     name: "Action",
     cell: (row) => (
       <Dropdown arrowIcon={false} inline label={<FiMoreVertical />}>
-        <Link href={`/field-clusters/edit/${row.id}`}>
+        <Link href={`/admin-pages/field-clusters/edit/${row.id}`}>
           <Dropdown.Item icon={FiEdit}>Edit</Dropdown.Item>
         </Link>
-        <Link href={`/field-clusters/details/${row.id}`}>
+        <Link href={`/admin-pages/field-clusters/details/${row.id}`}>
           <Dropdown.Item icon={FiEye}>Details</Dropdown.Item>
         </Link>
       </Dropdown>

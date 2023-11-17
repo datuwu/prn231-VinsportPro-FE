@@ -42,7 +42,7 @@ const TypeEditPage = () => {
     error: typeError,
   } = useAxios({
     method: "get",
-    url: `${API}/sportType/?filter=ID%20eq%20${typeId}`,
+    url: `${API}/sportTypes/?filter=ID%20eq%20${typeId}`,
   });
 
   //Fetch old data to form
@@ -74,12 +74,12 @@ const TypeEditPage = () => {
       };
       console.log("submit data", payloadData.data);
       axios
-        .put(`${API}/sportType/${typeId}`, payloadData.data)
+        .put(`${API}/sportTypes/${typeId}`, payloadData.data)
         .then((response) => {
           setSpinner(false);
           formik.resetForm();
           message.success("Update sport type success");
-          router.push("/sport-types/index");
+          router.push("/admin-pages/sport-types/index");
         })
         .catch((error) => {
           message.error("An error occurred");
@@ -93,7 +93,7 @@ const TypeEditPage = () => {
     <PageLayout>
       <div className="w-full p-10 flex flex-col gap-4 h-[100vh] overflow-y-scroll">
         <div className="flex flex-col justify-between gap-4">
-          <Link href={"/sport-types/index"} className="flex flex-row gap-2">
+          <Link href={"/admin-pages/sport-types/index"} className="flex flex-row gap-2">
             {<HiOutlineArrowSmallLeft className="self-center" />} Back to list
           </Link>
           <h2 className="text-3xl font-bold">Edit sport type</h2>

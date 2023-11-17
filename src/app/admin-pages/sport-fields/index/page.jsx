@@ -19,7 +19,7 @@ const FieldListPage = () => {
         <div className="flex flex-row justify-between">
           <h2 className="text-3xl font-bold">Sport Fields List</h2>
           {user && userRoleEnums[user.role] !== "Admin" && (
-            <Link href={"/sport-fields/create"}>
+            <Link href={"/admin-pages/sport-fields/create"}>
               <Button>
                 <div className="flex flex-row justify-center gap-4">
                   <div className="my-auto">

@@ -31,7 +31,7 @@ const FieldCreatePage = () => {
     error: clusterError,
   } = useAxios({
     method: "get",
-    url: `${API}/fieldCluster/`,
+    url: `${API}/fieldClusters/`,
   });
   // Get sport type list
   const {
@@ -40,7 +40,7 @@ const FieldCreatePage = () => {
     error: typeError,
   } = useAxios({
     method: "get",
-    url: `${API}/sportType/`,
+    url: `${API}/sportTypes/`,
   });
 
   const formik = useFormik({
@@ -65,12 +65,12 @@ const FieldCreatePage = () => {
       };
       console.log(payloadData.data);
       axios
-        .post(`${API}/sportField`, payloadData.data)
+        .post(`${API}/sportFields`, payloadData.data)
         .then((response) => {
           setSpinner(false);
           formik.resetForm();
 
-          router.push("/sport-fields/index");
+          router.push("/admin-pages/sport-fields/index");
         })
         .then((response) => {
           message.success("Add new sport field success");
@@ -87,7 +87,7 @@ const FieldCreatePage = () => {
       <PageLayout>
         <div className="w-full p-10 flex flex-col gap-4 h-[100vh] overflow-y-scroll">
           <div className="flex flex-col justify-between gap-4">
-            <Link href={"/sport-fields/index"} className="flex flex-row gap-2">
+            <Link href={"/admin-pages/sport-fields/index"} className="flex flex-row gap-2">
               {<HiOutlineArrowSmallLeft className="self-center" />} Back to list
             </Link>
             <h2 className="text-3xl font-bold">Add new sport field</h2>

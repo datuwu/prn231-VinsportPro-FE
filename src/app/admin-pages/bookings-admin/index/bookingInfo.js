@@ -52,7 +52,7 @@ export const bookingColumns = [
     name: "Action",
     cell: (row) => (
       <Dropdown arrowIcon={false} inline label={<FiMoreVertical />}>
-        <Link href={`/bookings-admin/details/${row.id}`}>
+        <Link href={`/admin-pages/bookings-admin/details/${row.id}`}>
           <Dropdown.Item icon={FiEye}>Details</Dropdown.Item>
         </Link>
       </Dropdown>

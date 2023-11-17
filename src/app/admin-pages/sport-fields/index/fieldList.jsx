@@ -10,7 +10,7 @@ const FieldList = () => {
   const [keyword, setKeyword] = useState("");
   const { response, loading, error } = useAxios({
     method: "get",
-    url: `${API}/sportField`,
+    url: `${API}/sportFields`,
   });
 
   console.log("Fetched sport fields data", response);

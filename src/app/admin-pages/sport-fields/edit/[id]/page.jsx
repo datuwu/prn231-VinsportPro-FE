@@ -42,7 +42,7 @@ const FieldEditPage = () => {
     error: clusterError,
   } = useAxios({
     method: "get",
-    url: `${API}/fieldCluster/`,
+    url: `${API}/fieldClusters/`,
   });
   // Get sport type list
   const {
@@ -51,7 +51,7 @@ const FieldEditPage = () => {
     error: typeError,
   } = useAxios({
     method: "get",
-    url: `${API}/sportType/`,
+    url: `${API}/sportTypes/`,
   });
 
   //Fetch old field data
@@ -61,7 +61,7 @@ const FieldEditPage = () => {
     error: fieldError,
   } = useAxios({
     method: "get",
-    url: `${API}/sportField/?filter=ID%20eq%20${fieldId}`,
+    url: `${API}/sportFields/?filter=ID%20eq%20${fieldId}`,
   });
 
   //Fetch old data to form
@@ -97,12 +97,12 @@ const FieldEditPage = () => {
       };
       console.log("submit data", payloadData.data);
       axios
-        .put(`${API}/sportField/${fieldId}`, payloadData.data)
+        .put(`${API}/sportFields/${fieldId}`, payloadData.data)
         .then((response) => {
           setSpinner(false);
           formik.resetForm();
           message.success("Update sport field success");
-          router.push("/sport-fields/index");
+          router.push("/admin-pages/sport-fields/index");
         })
         .catch((error) => {
           message.error("An error occurred");
@@ -116,7 +116,7 @@ const FieldEditPage = () => {
     <PageLayout>
       <div className="w-full p-10 flex flex-col gap-4 h-[100vh] overflow-y-scroll">
         <div className="flex flex-col justify-between gap-4">
-          <Link href={"/sport-fields/index"} className="flex flex-row gap-2">
+          <Link href={"/admin-pages/sport-fields/index"} className="flex flex-row gap-2">
             {<HiOutlineArrowSmallLeft className="self-center" />} Back to list
           </Link>
           <h2 className="text-3xl font-bold">Edit sport field</h2>
