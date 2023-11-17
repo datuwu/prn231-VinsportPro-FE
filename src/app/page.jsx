@@ -21,7 +21,7 @@ const FirstPage = () => {
 
         <div className="relative flex place-items-center mt-12 mb-16">
           <Image
-            className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
+            className="relative "
             src="/vinsport-logo.svg"
             alt="Vinsport Pro Field Booking Logo"
             width={180}
@@ -32,7 +32,7 @@ const FirstPage = () => {
 
         <div className="grid text-center lg:max-w-5xl lg:w-full lg:grid-cols-2 lg:text-left gap-8">
           <a
-            href="/bookings"
+            href="/san-bong"
             className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-blue-500 hover:bg-blue-50 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
           >
             <h2 className="mb-3 text-2xl font-semibold">Book a Field</h2>
@@ -50,20 +50,6 @@ const FirstPage = () => {
               Check the schedule for upcoming events and availability.
             </p>
           </a>
-        </div>
-
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <p className="text-gray-600 dark:text-gray-300 text-lg">
-            Powered by{" "}
-            <a
-              href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-500 hover:underline dark:text-neutral-500"
-            >
-              Vercel
-            </a>
-          </p>
         </div>
       </main>
     </PageLayout>

@@ -14,9 +14,9 @@ import {
 import { topSideBarData } from "./topSideBarData";
 import { usePathname, useRouter } from "next/navigation";
 import { getUserInfo, removeToken, removeUserInfo } from "@/helper";
-import { userRoleEnums } from "@/app/users/index/userInfo";
 import Image from "next/image";
 import Link from "next/link";
+import { userRoleEnums } from "@/constants/enums";
 
 const PageSidebar = () => {
   const router = useRouter();
