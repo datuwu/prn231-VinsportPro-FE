@@ -9,7 +9,7 @@ import {
 } from "flowbite-react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { usePathname, useRouter } from "next/navigation";
+import { useParams, usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { HiOutlineArrowSmallLeft } from "react-icons/hi2";
@@ -18,6 +18,7 @@ import { HiPlus } from "react-icons/hi";
 import moment from "moment/moment";
 import axios from "axios";
 import { API } from "@/constants";
+import useAxios from "@/hooks/useFetch";
 
 const { default: PageLayout } = require("@/layout/pageLayout");
 
@@ -156,8 +157,8 @@ const ClusterEditPage = () => {
                   onBlur={formik.handleBlur}
                   value={formik.values.adminId}
                 >
-                  {typeResponse && typeResponse.length > 0 ? (
-                    typeResponse.map((user, index) => {
+                  {clusterResponse && clusterResponse.length > 0 ? (
+                    clusterResponse.map((user, index) => {
                       return (
                         <option key={index} value={user.id}>
                           {user.fullname}

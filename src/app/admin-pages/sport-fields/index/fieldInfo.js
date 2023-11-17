@@ -10,7 +10,7 @@ export const fieldColumns = [
   },
   {
     name: "Name",
-    selector: (row) => row.fieldName,
+    selector: (row) => row.sportFieldName,
     sortable: true,
   },
   {
@@ -25,12 +25,12 @@ export const fieldColumns = [
   },
   {
     name: "Status",
-    selector: (row) => fieldStatusEnums[row.status],
+    selector: (row) => fieldStatusEnums[row.sportFieldStatus],
     sortable: true,
   },
   {
     name: "Field Cluster",
-    selector: (row) => row.sportFieldClusterId,
+    selector: (row) => row.fieldClusterId,
     sortable: true,
   },
   {
