@@ -6,30 +6,30 @@ import { HiOutlineArrowSmallLeft } from "react-icons/hi2";
 import useAxios from "@/hooks/useFetch";
 import { API } from "@/constants";
 import { useParams } from "next/navigation";
-import { userRoleEnums, userStatusEnums } from "../../index/userInfo";
+import { fieldStatusEnums } from "../../index/fieldInfo";
 
 const { default: PageLayout } = require("@/layout/pageLayout");
 
-const UserDetailPage = () => {
+const TypeDetailPage = () => {
   const params = useParams();
-  const userId = parseInt(params.id, 10);
+  const typeId = parseInt(params.id, 10);
 
   const { response, loading, error } = useAxios({
     method: "get",
-    url: `${API}/user/?filter=ID%20eq%20${userId}`,
+    url: `${API}/sportType/?filter=ID%20eq%20${typeId}`,
   });
 
-  if (isNaN(userId) || userId < 0) {
+  if (isNaN(typeId) || typeId < 0) {
     return (
       <PageLayout>
         <div className="w-full p-10 flex flex-col gap-4 h-[100vh] overflow-y-scroll">
-          <p>User not found.</p>
+          <p>Sport type not found.</p>
         </div>
       </PageLayout>
     );
   }
   if (error) {
-    message.error("Error While Getting User data");
+    message.error("Error While Getting Sport Type data");
     return <>No Data</>;
   }
   if (loading && !error)
@@ -41,20 +41,20 @@ const UserDetailPage = () => {
       </PageLayout>
     );
 
-  const userData = response[0];
-  console.log(userData);
+  const typeData = response[0];
+  console.log(typeData);
 
   return (
     <PageLayout>
       <div className="w-full p-10 flex flex-col gap-4 h-[100vh] overflow-y-scroll">
         <div className="flex flex-col gap-4">
           <Link
-            href={"/users/index"}
+            href={"/sport-types/index"}
             className="flex items-center gap-2 text-blue-500 hover:underline"
           >
             <HiOutlineArrowSmallLeft className="text-xl" /> Back to list
           </Link>
-          <h2 className="text-3xl font-bold">User Details</h2>
+          <h2 className="text-3xl font-bold">Sport Type Details</h2>
         </div>
         <div className="bg-white rounded-lg shadow p-6">
           <div className="grid grid-cols-2 gap-4">
@@ -62,31 +62,25 @@ const UserDetailPage = () => {
               <label htmlFor="id" className="text-lg font-bold">
                 ID
               </label>
-              <p>{userData.id}</p>
+              <p>{typeData.id}</p>
             </div>
             <div className="col-span-2 sm:col-span-1">
-              <label htmlFor="name" className="text-lg font-bold">
-              Full name
+              <label htmlFor="sportName" className="text-lg font-bold">
+              Sport name
               </label>
-              <p>{userData.name}</p>
+              <p>{typeData.sportName}</p>
+            </div>           
+            <div className="col-span-2 sm:col-span-1">
+              <label htmlFor="icon" className="text-lg font-bold">
+              Icon
+              </label>
+              <p>{typeData.icon}</p>
             </div>
             <div className="col-span-2 sm:col-span-1">
-              <label htmlFor="email" className="text-lg font-bold">
-                Email
+              <label htmlFor="costRate" className="text-lg font-bold">
+              Cost rate
               </label>
-              <p>{userData.email}</p>
-            </div>            
-            <div className="col-span-2 sm:col-span-1">
-              <label htmlFor="role" className="text-lg font-bold">
-              Role
-              </label>
-              <p>{userRoleEnums[userData.role]}</p>
-            </div>
-            <div className="col-span-2 sm:col-span-1">
-              <label htmlFor="status" className="text-lg font-bold">
-              Status
-              </label>
-              <p>{userStatusEnums[userData.status]}</p>
+              <p>{typeData.costRate}</p>
             </div>
           </div>
         </div>
@@ -95,4 +89,4 @@ const UserDetailPage = () => {
   );
 };
 
-export default UserDetailPage;
+export default TypeDetailPage;

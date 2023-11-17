@@ -61,25 +61,24 @@ const UserEditPage = () => {
   const formik = useFormik({
     initialValues: {
       Id: userId,
-      name: "",
+      fullname: "",
       email: "",
       password: "",
       phoneNumber: "",
-      firebaseID: "",
-      role: 1,
-      status: 1,
+      address: "",
+      role: 2,
     },
     validationSchema: Yup.object({
-      name: Yup.string().required("Required"),
+      fullname: Yup.string().required("Required"),
       email: Yup.string()
         .matches(emailRegExp, "Email is not valid")
         .required("Required"),
       password: Yup.string().required("Required"),
+      address: Yup.string().required("Required"),
       phoneNumber: Yup.string()
         .matches(phoneRegExp, "Phone number is not valid")
         .required("Required"),
       role: Yup.number().required("Required"),
-      status: Yup.number().required("Required"),
     }),
     onSubmit: (values) => {
       setSpinner(true);
@@ -119,20 +118,37 @@ const UserEditPage = () => {
           <Label value="User ID" />
           <div>{formik.values.Id}</div>
           <div className="flex flex-col gap-2">
-            <Label htmlFor="name" value="Full name" />
+            <Label htmlFor="fullname" value="Full name" />
             <TextInput
-              id="name"
+              id="fullname"
               type="text"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              value={formik.values.name}
+              value={formik.values.fullname}
             />
-            {formik.touched.name && formik.errors.name ? (
+            {formik.touched.fullname && formik.errors.fullname ? (
               <div className="text-xs text-red-600 dark:text-red-400">
-                {formik.errors.name}
+                {formik.errors.fullname}
               </div>
             ) : null}
           </div>
+
+          <div className="flex flex-col gap-2">
+            <Label htmlFor="phoneNumber" value="Phone number" />
+            <TextInput
+              id="phoneNumber"
+              type="text"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.phoneNumber}
+            />
+            {formik.touched.phoneNumber && formik.errors.phoneNumber ? (
+              <div className="text-xs text-red-600 dark:text-red-400">
+                {formik.errors.phoneNumber}
+              </div>
+            ) : null}
+          </div>
+
           <div className="flex flex-col gap-2">
             <Label htmlFor="email" value="email" />
             <TextInput
@@ -165,17 +181,17 @@ const UserEditPage = () => {
           </div>
 
           <div className="flex flex-col gap-2">
-            <Label htmlFor="phoneNumber" value="Phone number" />
+            <Label htmlFor="address" value="Address" />
             <TextInput
-              id="phoneNumber"
+              id="address"
               type="text"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              value={formik.values.phoneNumber}
+              value={formik.values.address}
             />
-            {formik.touched.phoneNumber && formik.errors.phoneNumber ? (
+            {formik.touched.address && formik.errors.address ? (
               <div className="text-xs text-red-600 dark:text-red-400">
-                {formik.errors.phoneNumber}
+                {formik.errors.address}
               </div>
             ) : null}
           </div>
@@ -189,30 +205,12 @@ const UserEditPage = () => {
               onBlur={formik.handleBlur}
               value={formik.values.role}
             >
-              <option value="1">Manager</option>
-              <option value="2">Staff</option>
+              <option value="1">Admin</option>
+              <option value="2">Customer</option>
             </Select>
             {formik.touched.role && formik.errors.role ? (
               <div className="text-xs text-red-600 dark:text-red-400">
                 {formik.errors.role}
-              </div>
-            ) : null}
-          </div>
-
-          <div className="flex flex-col gap-2">
-            <Label htmlFor="status" value="Status" />
-            <Select
-              id="status"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.status}
-            >
-              <option value="1">Activated</option>
-              <option value="2">Deactivated</option>
-            </Select>
-            {formik.touched.status && formik.errors.status ? (
-              <div className="text-xs text-red-600 dark:text-red-400">
-                {formik.errors.status}
               </div>
             ) : null}
           </div>
