@@ -19,7 +19,7 @@ const FieldPage = () => {
           {response &&
             response.length > 0 &&
             response.map((item, index) => {
-              return <FieldCard />;
+              return <FieldCard fieldData={item}/>;
             })}
         </div>
       </div>

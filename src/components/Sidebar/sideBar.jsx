@@ -23,7 +23,7 @@ const PageSidebar = () => {
   const currentPathName = usePathname();
   const currentBasePath = currentPathName.split("/")[1];
   const userInfo = getUserInfo();
-  console.log("Sidebar - user info", userInfo);
+  //console.log("Sidebar - user info", userInfo);
   const handleLogout = () => {
     removeToken();
     removeUserInfo();

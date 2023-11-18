@@ -1,11 +1,35 @@
 "use client";
+import { API } from "@/constants";
+import useAxios from "@/hooks/useFetch";
 import PageLayout from "@/layout/pageLayout";
 import { Button, Image } from "antd";
+import { Spinner } from "flowbite-react";
 import Link from "next/link";
+import { useParams, useRouter } from "next/navigation";
 import React from "react";
 import { HiOutlineArrowSmallLeft } from "react-icons/hi2";
 
 const FieldDetail = () => {
+  const router = useRouter();
+  const params = useParams();
+  const userId = parseInt(params.id);
+  const { response, loading, error } = useAxios({
+    method: "get",
+    url: `${API}/fieldclusters(${userId})`,
+  });
+
+  if (loading)
+    return (
+      <PageLayout>
+        <Spinner />
+      </PageLayout>
+    );
+  if (error)
+    return (
+      <PageLayout>
+        <div className="flex flex-col w-full gap-4">Error occured</div>
+      </PageLayout>
+    );
   return (
     <PageLayout>
       <div className="flex flex-col w-full gap-4">
@@ -18,11 +42,19 @@ const FieldDetail = () => {
           }
           height={300}
         />
-        <h2 className="text-3xl font-bold">Field Name</h2>
-        <div>Address: ...</div>
-        <div>Description</div>
-        <Button className="w-[100px] ">Đặt sân</Button>
-
+        <h2 className="text-3xl font-bold">{response.fieldName}</h2>
+        <div className="font-bold">Address </div>
+        <div>{response.address}</div>
+        <div className="font-bold">Description </div>
+        <div>{response.description}</div>
+        <div className="font-bold">Opening time </div>
+        <div>{response.openingTime}</div>
+        <Link href={{
+          pathname:'/dat-san',
+          query: {fieldClusterId: 1}
+        }}>
+          <Button className="w-[100px] ">Đặt sân</Button>
+        </Link>
       </div>
     </PageLayout>
   );
