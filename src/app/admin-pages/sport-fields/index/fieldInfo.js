@@ -10,7 +10,7 @@ export const fieldColumns = [
   },
   {
     name: "Name",
-    selector: (row) => row.fieldName,
+    selector: (row) => row.sportFieldName,
     sortable: true,
   },
   {
@@ -25,22 +25,22 @@ export const fieldColumns = [
   },
   {
     name: "Status",
-    selector: (row) => fieldStatusEnums[row.status],
+    selector: (row) => fieldStatusEnums[row.sportFieldStatus],
     sortable: true,
   },
   {
     name: "Field Cluster",
-    selector: (row) => row.sportFieldClusterId,
+    selector: (row) => row.fieldClusterId,
     sortable: true,
   },
   {
     name: "Action",
     cell: (row) => (
       <Dropdown arrowIcon={false} inline label={<FiMoreVertical />}>
-        <Link href={`/sport-fields/edit/${row.id}`}>
+        <Link href={`/admin-pages/sport-fields/edit/${row.id}`}>
           <Dropdown.Item icon={FiEdit}>Edit</Dropdown.Item>
         </Link>
-        <Link href={`/sport-fields/details/${row.id}`}>
+        <Link href={`/admin-pages/sport-fields/details/${row.id}`}>
           <Dropdown.Item icon={FiEye}>Details</Dropdown.Item>
         </Link>
       </Dropdown>

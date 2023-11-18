@@ -15,7 +15,7 @@ const ClusterDetailPage = () => {
 
   const { response, loading, error } = useAxios({
     method: "get",
-    url: `${API}/fieldCluster/?filter=ID%20eq%20${clusterId}`,
+    url: `${API}/fieldClusters/?filter=ID%20eq%20${clusterId}`,
   });
 
   if (isNaN(clusterId) || clusterId < 0) {
@@ -48,7 +48,7 @@ const ClusterDetailPage = () => {
       <div className="w-full p-10 flex flex-col gap-4 h-[100vh] overflow-y-scroll">
         <div className="flex flex-col gap-4">
           <Link
-            href={"/field-clusters/index"}
+            href={"/admin-pages/field-clusters/index"}
             className="flex items-center gap-2 text-blue-500 hover:underline"
           >
             <HiOutlineArrowSmallLeft className="text-xl" /> Back to list

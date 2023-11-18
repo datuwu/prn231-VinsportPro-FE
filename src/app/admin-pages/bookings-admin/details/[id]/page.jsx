@@ -15,7 +15,7 @@ const BookingDetailPage = () => {
 
   const { response, loading, error } = useAxios({
     method: "get",
-    url: `${API}/booking/?filter=ID%20eq%20${bookingId}`,
+    url: `${API}/bookings/?filter=ID%20eq%20${bookingId}`,
   });
 
   if (isNaN(bookingId) || bookingId < 0) {
@@ -48,7 +48,7 @@ const BookingDetailPage = () => {
       <div className="w-full p-10 flex flex-col gap-4 h-[100vh] overflow-y-scroll">
         <div className="flex flex-col gap-4">
           <Link
-            href={"/bookings-admin/index"}
+            href={"/admin-pages/bookings-admin/index"}
             className="flex items-center gap-2 text-blue-500 hover:underline"
           >
             <HiOutlineArrowSmallLeft className="text-xl" /> Back to list

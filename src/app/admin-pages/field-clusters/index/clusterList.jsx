@@ -10,7 +10,7 @@ const ClusterList = () => {
   const [keyword, setKeyword] = useState("");
   const { response, loading, error } = useAxios({
     method: "get",
-    url: `${API}/fieldCluster`,
+    url: `${API}/fieldClusters`,
   });
 
   console.log("Fetched field clusters data", response);

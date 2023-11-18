@@ -18,7 +18,7 @@ const UserListPage = () => {
         <div className="flex flex-row justify-between">
           <h2 className="text-3xl font-bold">User List</h2>
           {user && userRoleEnums[user.role] === "Admin" && (
-            <Link href={"/users/create"}>
+            <Link href={"/admin-pages/users/create"}>
               <Button>
                 <div className="flex flex-row justify-center gap-4">
                   <div className="my-auto">

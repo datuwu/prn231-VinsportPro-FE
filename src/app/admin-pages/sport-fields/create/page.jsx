@@ -31,7 +31,7 @@ const FieldCreatePage = () => {
     error: clusterError,
   } = useAxios({
     method: "get",
-    url: `${API}/fieldCluster/`,
+    url: `${API}/fieldClusters/`,
   });
   // Get sport type list
   const {
@@ -40,23 +40,23 @@ const FieldCreatePage = () => {
     error: typeError,
   } = useAxios({
     method: "get",
-    url: `${API}/sportType/`,
+    url: `${API}/sportTypes/`,
   });
 
   const formik = useFormik({
     initialValues: {
-      name: "",
+      sportFieldName: "",
       displayIndex: 1,
       sportTypeId: 1,
-      status: 1,
-      sportFieldClusterId: 1,
+      sportFieldStatus: 1,
+      fieldClusterId: 1,
     },
     validationSchema: Yup.object({
-      name: Yup.string().required("Required"),
+      sportFieldName: Yup.string().required("Required"),
       displayIndex: Yup.string().required("Required"),
       sportTypeId: Yup.number().required("Required"),
-      sportFieldClusterId: Yup.number().required("Required"),
-      status: Yup.number().required("Required"),
+      fieldClusterId: Yup.number().required("Required"),
+      sportFieldStatus: Yup.number().required("Required"),
     }),
     onSubmit: (values) => {
       setSpinner(true);
@@ -65,12 +65,12 @@ const FieldCreatePage = () => {
       };
       console.log(payloadData.data);
       axios
-        .post(`${API}/sportField`, payloadData.data)
+        .post(`${API}/sportFields`, payloadData.data)
         .then((response) => {
           setSpinner(false);
           formik.resetForm();
 
-          router.push("/sport-fields/index");
+          router.push("/admin-pages/sport-fields/index");
         })
         .then((response) => {
           message.success("Add new sport field success");
@@ -87,7 +87,7 @@ const FieldCreatePage = () => {
       <PageLayout>
         <div className="w-full p-10 flex flex-col gap-4 h-[100vh] overflow-y-scroll">
           <div className="flex flex-col justify-between gap-4">
-            <Link href={"/sport-fields/index"} className="flex flex-row gap-2">
+            <Link href={"/admin-pages/sport-fields/index"} className="flex flex-row gap-2">
               {<HiOutlineArrowSmallLeft className="self-center" />} Back to list
             </Link>
             <h2 className="text-3xl font-bold">Add new sport field</h2>
@@ -97,17 +97,17 @@ const FieldCreatePage = () => {
             className="flex flex-col gap-4 w-[600px]"
           >
             <div className="flex flex-col gap-2">
-              <Label htmlFor="name" value="Field name" />
+              <Label htmlFor="sportFieldName" value="Field name" />
               <TextInput
-                id="name"
+                id="sportFieldName"
                 type="text"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                value={formik.values.name}
+                value={formik.values.sportFieldName}
               />
-              {formik.touched.name && formik.errors.name ? (
+              {formik.touched.sportFieldName && formik.errors.sportFieldName ? (
                 <div className="text-xs text-red-600 dark:text-red-400">
-                  {formik.errors.name}
+                  {formik.errors.sportFieldName}
                 </div>
               ) : null}
             </div>
@@ -153,20 +153,20 @@ const FieldCreatePage = () => {
 
              {/* //* Field Cluster */}
           <div className="flex flex-col w-full gap-2">
-            <Label htmlFor="sportFieldClusterId" value="Field cluster" />
+            <Label htmlFor="fieldClusterId" value="Field cluster" />
             <div className="flex w-full gap-2">
               <div className="w-[500px]">
                 <Select
-                  id="sportFieldClusterId"
+                  id="fieldClusterId"
                   onChange={(e) => {
                     const stringSelection = e.target.value;
                     formik.setFieldValue(
-                      "sportFieldClusterId",
+                      "fieldClusterId",
                       parseInt(stringSelection)
                     );
                   }}
                   onBlur={formik.handleBlur}
-                  value={formik.values.sportFieldClusterId}
+                  value={formik.values.fieldClusterId}
                 >
                   {clusterResponse && clusterResponse.length > 0 ? (
                     clusterResponse.map((fieldCluster, index) => {
@@ -183,9 +183,9 @@ const FieldCreatePage = () => {
               </div>
             </div>
 
-            {formik.touched.sportFieldClusterId && formik.errors.sportFieldClusterId ? (
+            {formik.touched.fieldClusterId && formik.errors.fieldClusterId ? (
               <div className="text-xs text-red-600 dark:text-red-400">
-                {formik.errors.sportFieldClusterId}
+                {formik.errors.fieldClusterId}
               </div>
             ) : null}
           </div>

@@ -19,7 +19,7 @@ const ClusterListPage = () => {
         <div className="flex flex-row justify-between">
           <h2 className="text-3xl font-bold">Field Clusters List</h2>
           {user && userRoleEnums[user.role] === "Admin" && (
-            <Link href={"/field-clusters/create"}>
+            <Link href={"/admin-pages/field-clusters/create"}>
               <Button>
                 <div className="flex flex-row justify-center gap-4">
                   <div className="my-auto">

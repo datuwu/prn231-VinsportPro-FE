@@ -6,7 +6,6 @@ import { HiOutlineArrowSmallLeft } from "react-icons/hi2";
 import useAxios from "@/hooks/useFetch";
 import { API } from "@/constants";
 import { useParams } from "next/navigation";
-import { fieldStatusEnums } from "../../index/fieldInfo";
 
 const { default: PageLayout } = require("@/layout/pageLayout");
 
@@ -16,7 +15,7 @@ const TypeDetailPage = () => {
 
   const { response, loading, error } = useAxios({
     method: "get",
-    url: `${API}/sportType/?filter=ID%20eq%20${typeId}`,
+    url: `${API}/sportTypes/?filter=ID%20eq%20${typeId}`,
   });
 
   if (isNaN(typeId) || typeId < 0) {
@@ -49,7 +48,7 @@ const TypeDetailPage = () => {
       <div className="w-full p-10 flex flex-col gap-4 h-[100vh] overflow-y-scroll">
         <div className="flex flex-col gap-4">
           <Link
-            href={"/sport-types/index"}
+            href={"/admin-pages/sport-types/index"}
             className="flex items-center gap-2 text-blue-500 hover:underline"
           >
             <HiOutlineArrowSmallLeft className="text-xl" /> Back to list

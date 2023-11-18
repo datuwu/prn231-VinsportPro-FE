@@ -43,12 +43,12 @@ const TypeCreatePage = () => {
       };
       console.log(payloadData.data);
       axios
-        .post(`${API}/sportType`, payloadData.data)
+        .post(`${API}/sportTypes`, payloadData.data)
         .then((response) => {
           setSpinner(false);
           formik.resetForm();
 
-          router.push("/sport-types/index");
+          router.push("/admin-pages/sport-types/index");
         })
         .then((response) => {
           message.success("Add new sport type success");
@@ -65,7 +65,7 @@ const TypeCreatePage = () => {
       <PageLayout>
         <div className="w-full p-10 flex flex-col gap-4 h-[100vh] overflow-y-scroll">
           <div className="flex flex-col justify-between gap-4">
-            <Link href={"/sport-types/index"} className="flex flex-row gap-2">
+            <Link href={"/admin-pages/sport-types/index"} className="flex flex-row gap-2">
               {<HiOutlineArrowSmallLeft className="self-center" />} Back to list
             </Link>
             <h2 className="text-3xl font-bold">Add new sport type</h2>

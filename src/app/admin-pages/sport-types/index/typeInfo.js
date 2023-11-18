@@ -27,10 +27,10 @@ export const typeColumns = [
     name: "Action",
     cell: (row) => (
       <Dropdown arrowIcon={false} inline label={<FiMoreVertical />}>
-        <Link href={`/sport-types/edit/${row.id}`}>
+        <Link href={`/admin-pages/sport-types/edit/${row.id}`}>
           <Dropdown.Item icon={FiEdit}>Edit</Dropdown.Item>
         </Link>
-        <Link href={`/sport-types/details/${row.id}`}>
+        <Link href={`/admin-pages/sport-types/details/${row.id}`}>
           <Dropdown.Item icon={FiEye}>Details</Dropdown.Item>
         </Link>
       </Dropdown>

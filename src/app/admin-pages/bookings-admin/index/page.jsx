@@ -11,7 +11,6 @@ import { userRoleEnums } from "../../users/index/userInfo";
 
 const BookingListPage = () => {
   const router = useRouter();
-  const user = getUserInfo();
 
   return (
     <PageLayout>

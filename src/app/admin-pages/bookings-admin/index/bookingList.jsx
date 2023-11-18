@@ -10,7 +10,7 @@ const BookingList = () => {
   const [keyword, setKeyword] = useState("");
   const { response, loading, error } = useAxios({
     method: "get",
-    url: `${API}/booking`,
+    url: `${API}/bookings`,
   });
 
   console.log("Fetched booking data", response);

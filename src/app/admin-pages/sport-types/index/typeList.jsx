@@ -10,7 +10,7 @@ const TypeList = () => {
   const [keyword, setKeyword] = useState("");
   const { response, loading, error } = useAxios({
     method: "get",
-    url: `${API}/sportType`,
+    url: `${API}/sportTypes`,
   });
 
   console.log("Fetched sport types data", response);

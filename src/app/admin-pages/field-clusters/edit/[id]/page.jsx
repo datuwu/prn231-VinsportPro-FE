@@ -9,7 +9,7 @@ import {
 } from "flowbite-react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { usePathname, useRouter } from "next/navigation";
+import { useParams, usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { HiOutlineArrowSmallLeft } from "react-icons/hi2";
@@ -18,6 +18,7 @@ import { HiPlus } from "react-icons/hi";
 import moment from "moment/moment";
 import axios from "axios";
 import { API } from "@/constants";
+import useAxios from "@/hooks/useFetch";
 
 const { default: PageLayout } = require("@/layout/pageLayout");
 
@@ -44,7 +45,7 @@ const ClusterEditPage = () => {
     error: clusterError,
   } = useAxios({
     method: "get",
-    url: `${API}/fieldCluster/?filter=ID%20eq%20${clusterId}`,
+    url: `${API}/fieldClusters/?filter=ID%20eq%20${clusterId}`,
   });
 
   //Fetch old data to form
@@ -79,12 +80,12 @@ const ClusterEditPage = () => {
         };
         console.log("submit data", payloadData.data);
         axios
-          .put(`${API}/fieldCluster/${clusterId}`, payloadData.data)
+          .put(`${API}/fieldClusters/${clusterId}`, payloadData.data)
           .then((response) => {
             setSpinner(false);
             formik.resetForm();
             message.success("Update field cluster success");
-            router.push("/field-clusters/index");
+            router.push("/admin-pages/field-clusters/index");
           })
           .catch((error) => {
             message.error("An error occurred");
@@ -98,7 +99,7 @@ const ClusterEditPage = () => {
       <PageLayout>
         <div className="w-full p-10 flex flex-col gap-4 h-[100vh] overflow-y-scroll">
           <div className="flex flex-col justify-between gap-4">
-            <Link href={"/field-clusters/index"} className="flex flex-row gap-2">
+            <Link href={"/admin-pages/field-clusters/index"} className="flex flex-row gap-2">
               {<HiOutlineArrowSmallLeft className="self-center" />} Back to list
             </Link>
             <h2 className="text-3xl font-bold">Add new field cluster</h2>
@@ -156,8 +157,8 @@ const ClusterEditPage = () => {
                   onBlur={formik.handleBlur}
                   value={formik.values.adminId}
                 >
-                  {typeResponse && typeResponse.length > 0 ? (
-                    typeResponse.map((user, index) => {
+                  {clusterResponse && clusterResponse.length > 0 ? (
+                    clusterResponse.map((user, index) => {
                       return (
                         <option key={index} value={user.id}>
                           {user.fullname}

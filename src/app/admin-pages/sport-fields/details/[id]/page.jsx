@@ -16,7 +16,7 @@ const FieldDetailPage = () => {
 
   const { response, loading, error } = useAxios({
     method: "get",
-    url: `${API}/sportField/?filter=ID%20eq%20${fieldId}`,
+    url: `${API}/sportFields/?filter=ID%20eq%20${fieldId}`,
   });
 
   if (isNaN(fieldId) || fieldId < 0) {
@@ -49,7 +49,7 @@ const FieldDetailPage = () => {
       <div className="w-full p-10 flex flex-col gap-4 h-[100vh] overflow-y-scroll">
         <div className="flex flex-col gap-4">
           <Link
-            href={"/sport-fields/index"}
+            href={"/admin-pages/sport-fields/index"}
             className="flex items-center gap-2 text-blue-500 hover:underline"
           >
             <HiOutlineArrowSmallLeft className="text-xl" /> Back to list

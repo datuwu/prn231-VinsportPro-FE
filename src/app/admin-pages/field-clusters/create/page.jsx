@@ -57,12 +57,12 @@ const ClusterCreatePage = () => {
       };
       console.log(payloadData.data);
       axios
-        .post(`${API}/fieldCluster`, payloadData.data)
+        .post(`${API}/fieldClusters`, payloadData.data)
         .then((response) => {
           setSpinner(false);
           formik.resetForm();
 
-          router.push("/field-clusters/index");
+          router.push("/admin-pages/field-clusters/index");
         })
         .then((response) => {
           message.success("Add new field cluster success");
@@ -79,7 +79,7 @@ const ClusterCreatePage = () => {
       <PageLayout>
         <div className="w-full p-10 flex flex-col gap-4 h-[100vh] overflow-y-scroll">
           <div className="flex flex-col justify-between gap-4">
-            <Link href={"/field-clusters/index"} className="flex flex-row gap-2">
+            <Link href={"/admin-pages/field-clusters/index"} className="flex flex-row gap-2">
               {<HiOutlineArrowSmallLeft className="self-center" />} Back to list
             </Link>
             <h2 className="text-3xl font-bold">Add new field cluster</h2>
