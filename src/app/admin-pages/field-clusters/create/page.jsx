@@ -18,6 +18,7 @@ import { HiPlus } from "react-icons/hi";
 import moment from "moment/moment";
 import axios from "axios";
 import { API } from "@/constants";
+import useAxios from "@/hooks/useFetch";
 
 const { default: PageLayout } = require("@/layout/pageLayout");
 
@@ -137,8 +138,8 @@ const ClusterCreatePage = () => {
                   onBlur={formik.handleBlur}
                   value={formik.values.adminId}
                 >
-                  {typeResponse && typeResponse.length > 0 ? (
-                    typeResponse.map((user, index) => {
+                  {userResponse && userResponse.length > 0 ? (
+                    userResponse.map((user, index) => {
                       return (
                         <option key={index} value={user.id}>
                           {user.fullname}

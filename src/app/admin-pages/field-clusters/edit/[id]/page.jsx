@@ -157,8 +157,8 @@ const ClusterEditPage = () => {
                   onBlur={formik.handleBlur}
                   value={formik.values.adminId}
                 >
-                  {clusterResponse && clusterResponse.length > 0 ? (
-                    clusterResponse.map((user, index) => {
+                  {userResponse && userResponse.length > 0 ? (
+                    userResponse.map((user, index) => {
                       return (
                         <option key={index} value={user.id}>
                           {user.fullname}
