@@ -35,49 +35,63 @@ const PageSidebar = () => {
       <div className="flex flex-col overflow-auto justify-between h-full">
         <Sidebar.Items aria-label="Default Items example" className="w-full">
           <Sidebar.ItemGroup className="w-full ">
-            {topSideBarData.map((item, index) => {
-              // *Check list navbar
-              if (Array.isArray(item.items)) {
-                return (
-                  <Sidebar.Collapse
-                    key={index}
-                    icon={item.icon} // Change the icon as needed
-                    label={item.title || "Sub Items"}
-                  >
-                    {item.items.map((subItem, subIndex) => {
-                      const navBasePath = subItem.href.split("/")[1];
-                      const activeRouteDecoration =
-                        currentBasePath === navBasePath ? "bg-gray-200" : "";
-
-                      return (
-                        <Sidebar.Item
-                          key={subIndex}
-                          href={subItem.href}
-                          icon={subItem.icon}
-                          className={`justify-start ${activeRouteDecoration}`}
-                        >
-                          <p className="overflow-clip">{subItem.title}</p>
-                        </Sidebar.Item>
-                      );
-                    })}
-                  </Sidebar.Collapse>
-                );
-              }
-              // *Check item navbar
-              else {
-                const navBasePath = item.href.split("/")[1];
-                const activeRouteDecoration =
-                  currentBasePath === navBasePath ? "bg-gray-200" : "";
-                return (
-                  <Sidebar.Item
-                    key={index}
-                    href={item.href}
-                    icon={item.icon}
-                    className={`justify-start ${activeRouteDecoration}`}
-                  >
-                    <p className="overflow-clip">{item.title}</p>
-                  </Sidebar.Item>
-                );
+          {topSideBarData.map((item, index) => {
+              if (
+                userInfo &&
+                item.allowRole.includes(userRoleEnums[userInfo.role])
+              ) {
+                // *Check list navbar
+                if (Array.isArray(item.items)) {
+                  return (
+                    <Sidebar.Collapse
+                      key={index}
+                      icon={item.icon} // Change the icon as needed
+                      label={item.title || "Sub Items"}
+                    >
+                      {item.items.map((subItem, subIndex) => {
+                        const navBasePath = subItem.href.split("/")[1];
+                        const activeRouteDecoration =
+                          currentBasePath === navBasePath ? "bg-gray-200" : "";
+                        if (
+                          userInfo &&
+                          subItem.allowRole.includes(userRoleEnums[userInfo.role])
+                        ) {
+                          return (
+                            <Sidebar.Item
+                              key={subIndex}
+                              href={subItem.href}
+                              icon={subItem.icon}
+                              className={`justify-start ${activeRouteDecoration}`}
+                            >
+                              <p className="overflow-clip">{subItem.title}</p>
+                            </Sidebar.Item>
+                          );
+                        }
+                      })}
+                    </Sidebar.Collapse>
+                  );
+                }
+                // *Check item navbar
+                else {
+                  const navBasePath = item.href.split("/")[1];
+                  const activeRouteDecoration =
+                    currentBasePath === navBasePath ? "bg-gray-200" : "";
+                  if (
+                    userInfo &&
+                    item.allowRole.includes(userRoleEnums[userInfo.role])
+                  ) {
+                    return (
+                      <Sidebar.Item
+                        key={index}
+                        href={item.href}
+                        icon={item.icon}
+                        className={`justify-start ${activeRouteDecoration}`}
+                      >
+                        <p className="overflow-clip">{item.title}</p>
+                      </Sidebar.Item>
+                    );
+                  }
+                }
               }
             })}
           </Sidebar.ItemGroup>

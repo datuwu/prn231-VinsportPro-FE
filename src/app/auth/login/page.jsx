@@ -50,8 +50,8 @@ const LoginPage = () => {
           setUserInfo(JSON.stringify(response.data.userInfo));
           setToken(response.data.token);
 
-          if (response.data.userInfo.role === 0) router.push("/users/index");
-          else router.push("/birds/index");
+          if (response.data.userInfo.role === 0) router.push("/");
+          else router.push("/");
           // Handle success.
           setSpinner(false);
         })
@@ -101,7 +101,7 @@ const LoginPage = () => {
         >
           <h3 className="text-3xl font-bold whitespace-nowrap">
             Welcome to <br />
-            <span className="text-[#444444]">Bird Farm Meal System</span>
+            <span className="text-[#444444]">Vinsport Field Booking System</span>
           </h3>
 
           <Label
@@ -161,7 +161,7 @@ const LoginPage = () => {
 
         <div className="w-6/12 relative">
           <Image
-            src="https://thuthuatnhanh.com/wp-content/uploads/2021/11/Hinh-anh-chim-chao-mao-sac-net-va-dep-nhat.jpg?fbclid=IwAR3W60eSDugGeS5fBfTpfHfX79KkZBLaP-rdic2sUHk8Vu2C6REkxDabOMU"
+            src="https://trannghia.net/wp-content/uploads/2021/01/Cong-vien-the-thao-7.jpg"
             sizes="100vh"
             fill
             style={{

@@ -24,22 +24,49 @@ import { CiBookmarkCheck } from "react-icons/ci";
 export const topSideBarData = [
   {
     title: "Home",
-    href: "/home",
+    href: "/",
     icon: FaHouseUser,
+  },
+  {
+    title: "Bookings",
+    href: "/admin-pages/booking-admin/index",
+    icon: FaTicketAlt,
+    allowRole: ["Admin"],
+  },
+  {
+    title: "Field Clusters",
+    href: "/admin-pages/field-clusters/index",
+    icon: FaTicketAlt,
+    allowRole: ["Admin"],
+  },
+  {
+    title: "Sport Fields",
+    href: "/admin-pages/sport-fields/index",
+    icon: FaTicketAlt,
+    allowRole: ["Admin"],
+  },
+  {
+    title: "Sport Types",
+    href: "/admin-pages/sport-types/index",
+    icon: FaTicketAlt,
+    allowRole: ["Admin"],
   },
   {
     title: "Book a field",
     href: "/san-bong",
     icon: FaTicketAlt,
+    allowRole: ["Customer"],
   },
   {
     title: "Booked fields",
     href: "/booking/index",
     icon: CiBookmarkCheck,
+    allowRole: ["Customer"],
   },
   {
     title: "User",
-    href: "/users/index",
+    href: "/admin-pages/users/index",
     icon: HiUserCircle,
+    allowRole: ["Customer"],
   },
 ];
